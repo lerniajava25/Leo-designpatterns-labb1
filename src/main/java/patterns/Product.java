@@ -3,12 +3,12 @@ package patterns;
 import java.time.LocalDate;
 
 public class Product {
-    private String id;
-    private String name;
-    private Category category;
-    private int rating;
-    private LocalDate createdDate;
-    private LocalDate modifiedDate;
+    private final String id;
+    private final String name;
+    private final Category category;
+    private final int rating;
+    private final LocalDate createdDate;
+    private final LocalDate modifiedDate;
 
     private Product(
             String id,
@@ -54,6 +54,11 @@ public class Product {
         }
 
         public Product build() {
+            if (name == null || name.isBlank()){
+                throw new IllegalStateException(
+                        "Name cannot be empty"
+                );
+            }
             return new Product(
                     id,
                     name,
