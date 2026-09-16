@@ -24,50 +24,6 @@ public class Product {
         this.rating = rating;
         this.createdDate = createdDate;
         this.modifiedDate = modifiedDate;
-
-    }
-
-    public static class Builder {
-        private String id;
-        private String name;
-        private Category category;
-        private int rating;
-
-        public Builder id(String id) {
-            this.id = id;
-            return this;
-        }
-
-        public Builder name(String name) {
-            this.name = name;
-            return this;
-        }
-
-        public Builder category(Category category) {
-            this.category = category;
-            return this;
-        }
-
-        public Builder rating(int rating) {
-            this.rating = rating;
-            return this;
-        }
-
-        public Product build() {
-            if (name == null || name.isBlank()){
-                throw new IllegalStateException(
-                        "Name cannot be empty"
-                );
-            }
-            return new Product(
-                    id,
-                    name,
-                    category,
-                    rating,
-                    LocalDate.now(),
-                    LocalDate.now()
-            );
-        }
     }
 
     public String getId() {
@@ -104,5 +60,49 @@ public class Product {
                 ", createdDate=" + createdDate +
                 ", modifiedDate=" + modifiedDate +
                 '}';
+    }
+
+    public static class Builder {
+        private String id;
+        private String name;
+        private Category category;
+        private int rating;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder category(Category category) {
+            this.category = category;
+            return this;
+        }
+
+        public Builder rating(int rating) {
+            this.rating = rating;
+            return this;
+        }
+
+        public Product build() {
+            if (name == null || name.isBlank()) {
+                throw new IllegalStateException(
+                        "Name cannot be empty"
+                );
+            }
+
+            return new Product(
+                    id,
+                    name,
+                    category,
+                    rating,
+                    LocalDate.now(),
+                    LocalDate.now()
+            );
+        }
     }
 }
