@@ -3,7 +3,7 @@ package patterns;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Product {
+public class Product implements Sellable {
     private final String id;
     private final String name;
     private final Category category;
@@ -30,10 +30,12 @@ public class Product {
         this.modifiedDate = modifiedDate;
     }
 
+    @Override
     public String getId() {
         return id;
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -42,6 +44,7 @@ public class Product {
         return category;
     }
 
+    @Override
     public BigDecimal getPrice() {
         return price;
     }
