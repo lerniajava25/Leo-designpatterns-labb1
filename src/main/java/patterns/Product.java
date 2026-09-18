@@ -1,11 +1,13 @@
 package patterns;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Product {
+public class Product implements Sellable {
     private final String id;
     private final String name;
     private final Category category;
+    private final BigDecimal price;
     private final int rating;
     private final LocalDate createdDate;
     private final LocalDate modifiedDate;
@@ -14,6 +16,7 @@ public class Product {
             String id,
             String name,
             Category category,
+            BigDecimal price,
             int rating,
             LocalDate createdDate,
             LocalDate modifiedDate) {
@@ -21,21 +24,29 @@ public class Product {
         this.id = id;
         this.name = name;
         this.category = category;
+        this.price = price;
         this.rating = rating;
         this.createdDate = createdDate;
         this.modifiedDate = modifiedDate;
     }
 
+    @Override
     public String getId() {
         return id;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
     public Category getCategory() {
         return category;
+    }
+
+    @Override
+    public BigDecimal getPrice() {
+        return price;
     }
 
     public int getRating() {
@@ -56,6 +67,7 @@ public class Product {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", category=" + category +
+                ", price=" + price +
                 ", rating=" + rating +
                 ", createdDate=" + createdDate +
                 ", modifiedDate=" + modifiedDate +
@@ -66,6 +78,7 @@ public class Product {
         private String id;
         private String name;
         private Category category;
+        private BigDecimal price;
         private int rating;
 
         public Builder id(String id) {
@@ -80,6 +93,11 @@ public class Product {
 
         public Builder category(Category category) {
             this.category = category;
+            return this;
+        }
+
+        public Builder price(BigDecimal price) {
+            this.price = price;
             return this;
         }
 
@@ -99,6 +117,7 @@ public class Product {
                     id,
                     name,
                     category,
+                    price,
                     rating,
                     LocalDate.now(),
                     LocalDate.now()
